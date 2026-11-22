@@ -1,0 +1,27 @@
+{
+  "name": "google-health-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Remote MCP server on Cloudflare Workers (D1 + KV + Cron) for Google Health API v4 (Fitbit Air / Pixel Watch)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:migrate:local": "wrangler d1 migrations apply google-health-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply google-health-db --remote"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "^1.2.4",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "hono": "^4.7.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261119.1",
+    "typescript": "^5.8.0",
+    "vitest": "^3.1.0",
+    "wrangler": "^4.10.0"
+  }
+}

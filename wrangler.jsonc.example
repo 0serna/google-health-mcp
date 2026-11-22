@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "google-health-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "triggers": {
+    // Automatic sync every 6 hours
+    "crons": ["0 */6 * * *"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "google-health-db",
+      "database_id": "<YOUR_D1_DATABASE_ID>",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "OAUTH_KV",
+      "id": "<YOUR_KV_NAMESPACE_ID>"
+    }
+  ],
+  "vars": {
+    "DEFAULT_TIMEZONE": "UTC",
+    "SLEEP_GOAL_MINUTES": "480",
+    "ALLOWED_GOOGLE_EMAIL": "you@gmail.com"
+  }
+}
